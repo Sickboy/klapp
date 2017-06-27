@@ -272,7 +272,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 0.0.2
+      <b>Version</b> 0.0.3
     </div>
     <strong>Copyright &copy; 2015-<?php echo date('Y'); ?> <a href="http://acomp24.pl">@Comp</a>.</strong> All rights
     reserved.
