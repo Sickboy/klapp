@@ -40,6 +40,14 @@
 		          <label for="exampleInputEmail1">Email</label>
 		          <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="{{ $users->email }}">
 		        </div>
+
+			<div class="form-group">
+		          <label>Role</label>
+		          <select name='role' class="form-control">
+		            <option>S</option>
+		            <option>A</option>
+		          </select>
+                	</div>
 		      
                 	  <button type="submit" class="btn btn-primary">Submit</button>
               		

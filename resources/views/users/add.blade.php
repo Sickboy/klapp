@@ -37,6 +37,14 @@
 		        </div>
 
 			<div class="form-group">
+		          <label>Role</label>
+		          <select name='role' class="form-control">
+		            <option>S</option>
+		            <option>A</option>
+		          </select>
+                	</div>
+
+			<div class="form-group">
 		          <label for="exampleInputEmail1">Password</label>
 		          <input type="password" class="form-control" id="exampleInputEmail1" name='password'>
 		        </div>

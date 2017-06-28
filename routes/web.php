@@ -24,3 +24,5 @@ Route::post('/users/insert','Users\Users@insert') ;
 Route::get('/users/delete/{id}','Users\Users@delete') ;
 Route::get('/users/edit/{id}','Users\Users@edit') ;
 Route::post('/users/update','Users\Users@update') ;
+
+Route::get('/gosp/plan','Gosp\Plan@index');

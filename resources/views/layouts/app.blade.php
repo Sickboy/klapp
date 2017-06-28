@@ -51,13 +51,15 @@
     <!-- Logo -->
     <a href="/" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>{{ config('app.name') }}</b></span>
+      <span class="logo-mini"><b>{{ config('app.nameshort') }}</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>{{ config('app.name') }}</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-     
+     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
@@ -146,7 +148,7 @@
           <li class="dropdown user user-menu">
             <a href="#" >
               <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ Auth::user()->name }} {{ Auth::user()->last_name }}</span>
+              <span class="hidden-xs">{{ Auth::user()->name }} {{ Auth::user()->last_name }} </span>
             </a>
             
           </li>
@@ -167,7 +169,7 @@
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-	<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+	<li @isset($Dashboard) class="active" @endisset ><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-globe"></i> <span>OGÓLNE</span>
@@ -195,7 +197,7 @@
 	<li><a href="#"><i class="fa fa-user"></i> Psy</a></li>
 	<li><a href="#"><i class="fa fa-user"></i> Zarząd</a></li>
 	</ul></li>
-	<li class="treeview">
+	<li @isset($gosp) class="active" @endisset class="treeview">
           <a href="#">
             <i class="fa fa-tree"></i> <span>GOSPODARKA ŁOWIECKA</span>
             <span class="pull-right-container">
@@ -203,7 +205,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-	<li><a href="#"><i class="fa fa-list-alt"></i> Plan łowiecki</a></li>
+	<li @isset($PlanLowiecki) class="active" @endisset><a href="/gosp/plan"><i class="fa fa-list-alt"></i> Plan łowiecki</a></li>
 	<li><a href="#"><i class="fa fa-list"></i> Odstrzały</a></li>
 	<li><a href="#"><i class="fa fa-binoculars"></i> Zwierzyna</a></li>
 	<li><a href="#"><i class="fa fa-bookmark"></i> Urządzenia</a></li>
@@ -227,13 +229,25 @@
 	</ul></li>
 	<li class="treeview">
           <a href="#">
+            <i class="fa fa-archive"></i> <span>ARCHIWUM</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+	<li><a href="#"><i class="fa fa-list-alt"></i> Plan łowiecki </a></li>
+	<li><a href="#"><i class="fa fa-file-text-o"></i> Uchwały </a></li>
+	<li><a href="#"><i class="fa fa-usd"></i> Ceny tuszy </a></li>
+	</ul></li>
+	<li @isset($ust) class="active" @endisset class="treeview">
+          <a href="#">
             <i class="fa fa-cogs"></i> <span>USTAWIENIA</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-	<li><a href="/users"><i class="fa fa-user-o"></i> Users</a></li>
+	<li @isset($Users) class="active" @endisset><a href="/users"><i class="fa fa-user-o"></i> Users</a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>asdf</span>
@@ -272,7 +286,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 0.0.3
+      <b>Time <b>{{ time() }} Version</b> 0.0.3
     </div>
     <strong>Copyright &copy; 2015-<?php echo date('Y'); ?> <a href="http://acomp24.pl">@Comp</a>.</strong> All rights
     reserved.

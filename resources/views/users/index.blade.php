@@ -19,7 +19,7 @@
 		 <div class="col-md-11">
 		    <div class="box">
 			<table class="table table-bordered">
-			<tr><td>ID</td><td>Name</td><td>Last name</td><td>Email</td><td>Create at</td></tr>
+			<tr><td>ID</td><td>Name</td><td>Last name</td><td>Email</td><td>Create at</td><td>Role</td></tr>
             		@foreach ($users as $user)
 		 		<tr>
 		    		<td valign="baseline">{{ $user->id }}</td>
@@ -27,6 +27,7 @@
 				<td valign="middle">{{ $user->last_name }}</td>
 				<td valign="middle">{{ $user->email }}</td>
 				<td valign="middle">{{ $user->created_at }}</td>
+				<td valign="middle">{{ $user->role }}</td>
 				<td><a href="/users/add"><i class="fa fa-plus-square-o fa-2x"></i></a>&nbsp<a href="/users/edit/{{ $user->id }}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
 &nbsp<a href="/users/delete/{{ $user->id }}"><i class="fa fa-minus-square-o fa-2x"></i></a></td>
          			</tr>

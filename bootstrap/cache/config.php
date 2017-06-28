@@ -146,13 +146,14 @@
   ),
   'app' => 
   array (
-    'name' => 'Test2',
+    'name' => 'KLApp',
+    'nameshort' => 'KLA',
     'env' => 'local',
     'debug' => true,
     'url' => 'http://localhost',
     'timezone' => 'UTC',
-    'locale' => 'en',
-    'fallback_locale' => 'en',
+    'locale' => 'pl',
+    'fallback_locale' => 'pl',
     'key' => 'base64:37wLNMWcECz6fPU6nB0I08FOm/LGThpYDc6Ahyay4Xs=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
