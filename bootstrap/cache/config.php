@@ -314,7 +314,7 @@
       'sqlite' => 
       array (
         'driver' => 'sqlite',
-        'database' => 'test2',
+        'database' => '/var/www/html/test2/database/database.sqlite',
         'prefix' => '',
       ),
       'mysql' => 

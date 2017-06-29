@@ -26,3 +26,9 @@ Route::get('/users/edit/{id}','Users\Users@edit') ;
 Route::post('/users/update','Users\Users@update') ;
 
 Route::get('/gosp/plan','Gosp\Plan@index');
+
+Route::get('/gosp/zwierzyna','Gosp\Zwierzyna@index');
+Route::get('/gosp/zwierzyna/jelen','Gosp\Zwierzyna@jelen');
+
+Route::get('/gosp/urzadzenia','Gosp\Urzadzenia@index');
+Route::get('/gosp/urzadzenia/{id}','Gosp\Urzadzenia@show') ;

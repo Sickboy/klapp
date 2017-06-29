@@ -207,8 +207,8 @@
           <ul class="treeview-menu">
 	<li @isset($PlanLowiecki) class="active" @endisset><a href="/gosp/plan"><i class="fa fa-list-alt"></i> Plan łowiecki</a></li>
 	<li><a href="#"><i class="fa fa-list"></i> Odstrzały</a></li>
-	<li><a href="#"><i class="fa fa-binoculars"></i> Zwierzyna</a></li>
-	<li><a href="#"><i class="fa fa-bookmark"></i> Urządzenia</a></li>
+	<li @isset($Zwierzyna) class="active" @endisset><a href="/gosp/zwierzyna"><i class="fa fa-binoculars"></i> Zwierzyna</a></li>
+	<li @isset($Urzadzenia) class="active" @endisset><a href="/gosp/urzadzenia"><i class="fa fa-bookmark"></i> Urządzenia</a></li>
 	<li><a href="#"><i class="fa fa-briefcase"></i> Prace</a></li>
 	<li><a href="#"><i class="fa fa-tasks"></i> Zadania</a></li>
 	<li><a href="#"><i class="fa fa-users"></i> Polowania zbiorowe</a></li>
@@ -239,6 +239,7 @@
 	<li><a href="#"><i class="fa fa-file-text-o"></i> Uchwały </a></li>
 	<li><a href="#"><i class="fa fa-usd"></i> Ceny tuszy </a></li>
 	</ul></li>
+@if (Auth::user()->role === "S")
 	<li @isset($ust) class="active" @endisset class="treeview">
           <a href="#">
             <i class="fa fa-cogs"></i> <span>USTAWIENIA</span>
@@ -269,7 +270,7 @@
           </a>
         </li>
 	</ul></li>
-        
+@endif  
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -330,6 +331,7 @@
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+@yield('js')
 </body>
 </html>
 @endif

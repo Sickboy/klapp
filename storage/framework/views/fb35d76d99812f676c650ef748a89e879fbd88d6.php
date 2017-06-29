@@ -208,8 +208,8 @@
           <ul class="treeview-menu">
 	<li <?php if(isset($PlanLowiecki)): ?> class="active" <?php endif; ?>><a href="/gosp/plan"><i class="fa fa-list-alt"></i> Plan łowiecki</a></li>
 	<li><a href="#"><i class="fa fa-list"></i> Odstrzały</a></li>
-	<li><a href="#"><i class="fa fa-binoculars"></i> Zwierzyna</a></li>
-	<li><a href="#"><i class="fa fa-bookmark"></i> Urządzenia</a></li>
+	<li <?php if(isset($Zwierzyna)): ?> class="active" <?php endif; ?>><a href="/gosp/zwierzyna"><i class="fa fa-binoculars"></i> Zwierzyna</a></li>
+	<li <?php if(isset($Urzadzenia)): ?> class="active" <?php endif; ?>><a href="/gosp/urzadzenia"><i class="fa fa-bookmark"></i> Urządzenia</a></li>
 	<li><a href="#"><i class="fa fa-briefcase"></i> Prace</a></li>
 	<li><a href="#"><i class="fa fa-tasks"></i> Zadania</a></li>
 	<li><a href="#"><i class="fa fa-users"></i> Polowania zbiorowe</a></li>
@@ -240,6 +240,7 @@
 	<li><a href="#"><i class="fa fa-file-text-o"></i> Uchwały </a></li>
 	<li><a href="#"><i class="fa fa-usd"></i> Ceny tuszy </a></li>
 	</ul></li>
+<?php if(Auth::user()->role === "S"): ?>
 	<li <?php if(isset($ust)): ?> class="active" <?php endif; ?> class="treeview">
           <a href="#">
             <i class="fa fa-cogs"></i> <span>USTAWIENIA</span>
@@ -270,7 +271,7 @@
           </a>
         </li>
 	</ul></li>
-        
+<?php endif; ?>  
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -331,6 +332,7 @@
 <script src="<?php echo e(asset('dist/js/pages/dashboard.js')); ?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo e(asset('dist/js/demo.js')); ?>"></script>
+<?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>
 <?php endif; ?>
