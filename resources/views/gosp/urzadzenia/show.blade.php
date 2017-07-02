@@ -28,7 +28,7 @@
 			<td>Typ</td><td>{{ $shows->typ}}</td></tr><tr>
 			<td>Rok budowy</td><td>{{ $shows->rokBudowy }}</td></tr><tr>
 			<td>Opiekun</td><td>{{ $shows->imie }} {{ $shows->nazwisko }}</td></tr><tr>
-			<td>Koordynaty</td><td>{{ $shows->gps}}</td></tr><tr>
+			<td>Koordynaty</td><td><a href="#" title="Pokaż na mapie">{{ $shows->gps}}</a></td></tr><tr>
 			<td>Zadania</td><td>{{ $shows->taskId}}</td>
 			</tr>
 		@endforeach

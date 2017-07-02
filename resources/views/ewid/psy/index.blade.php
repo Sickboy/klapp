@@ -4,8 +4,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Gosp
-        <small>Urz</small>
+        Ewid
+        <small>Psy</small>
       </h1>
       <ol class="breadcrumb">
         Home {{ $bc }}
@@ -21,19 +21,15 @@
          	
                     <table border="1" class="table table-bordered table-hover">
             		<tr>
-			<th>Numer</th>
-			<th>Nazwa</th>
-			<th>Typ</th>
-			<th>Rok budowy</th>
-			<th>Opiekun</th>
+			<th>Rasa</th><th>Imię</th><th>Płeć</th><th>Barwa</th><th>Właściciel</th>
 			</tr>
-            	@foreach ($urz as $urzs)
-			<tr onclick="window.document.location='/gosp/urzadzenia/{{ $urzs->id }}';">
-			<td>{{ $urzs->numer }}</td>
-			<td>{{ $urzs->nazwa }}</td>
-			<td>{{ $urzs->typ}}</td>
-			<td>{{ $urzs->rokBudowy }}</td>
-			<td>{{ $urzs->imie }} {{ $urzs->nazwisko }}</td>
+            	@foreach ($psy as $psys)
+			<tr onclick="window.document.location='/ewid/psy/{{ $psys->id }}';">
+			<td>{{ $psys->rasa }}</td>
+			<td>{{ $psys->nazwa }}</td>
+			<td>{{ $psys->plec }}</td>
+			<td>{{ $psys->barwa}}</td>
+			<td>{{ $psys->imie }} {{ $psys->nazwisko }}</td>
 			</tr>
 				@endforeach
 			</table></center>

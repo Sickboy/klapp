@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Gosp
-        <small>Urz</small>
+        <small>Prac</small>
       </h1>
       <ol class="breadcrumb">
         Home {{ $bc }}
@@ -21,19 +21,17 @@
          	
                     <table border="1" class="table table-bordered table-hover">
             		<tr>
-			<th>Numer</th>
-			<th>Nazwa</th>
-			<th>Typ</th>
-			<th>Rok budowy</th>
-			<th>Opiekun</th>
+			<th>Kiedy</th>
+			<th>Gdzie</th>
+			<th>Prowadzący</th>
+			<th>Ile godzin</th>
 			</tr>
-            	@foreach ($urz as $urzs)
-			<tr onclick="window.document.location='/gosp/urzadzenia/{{ $urzs->id }}';">
-			<td>{{ $urzs->numer }}</td>
-			<td>{{ $urzs->nazwa }}</td>
-			<td>{{ $urzs->typ}}</td>
-			<td>{{ $urzs->rokBudowy }}</td>
-			<td>{{ $urzs->imie }} {{ $urzs->nazwisko }}</td>
+            	@foreach ($prace as $praces)
+			<tr onclick="window.document.location='/gosp/prace/{{ $praces->id }}';">
+			<td>{{ $praces->kiedy }}</td>
+			<td>{{ $praces->gdzie }}</td>
+			<td>{{ $praces->imie }} {{ $praces->nazwisko }}</td>
+			<td>{{ $praces->godzin}}</td>
 			</tr>
 				@endforeach
 			</table></center>

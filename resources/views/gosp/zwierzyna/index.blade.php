@@ -21,9 +21,9 @@
          	
                     <table border="1" class="table table-bordered">
             		<tr>
-			<td>L.p.</td>
-			<td colspan="2">Gatunek</td>
-			<td>Stan w łowisku</td>
+			<th>L.p.</th>
+			<th colspan="2">Gatunek</th>
+			<th>Stan w łowisku</th>
 			</tr>
             		<tr>
 			<td>1</td>
@@ -70,7 +70,7 @@
 			</table></center>
             </div>
         </div>
-	<div class="col-md-6">
+	<div class="col-md-7">
 	    <div class="box">
             
             <div class="box-body">

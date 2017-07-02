@@ -23,13 +23,13 @@
 			<a href="#"><u>przejdź do wersji pełnej</u></a><br><br>
                     <table border="1" class="table table-bordered">
             		<tr>
-			<td>L.p.</td>
-			<td colspan="2">Gatunek</td>
-			<td>Stan w łowisku</td>
-			<td>Planowane pozyskanie</td>
-			<td>Pozyskano</td>
-			<td>Upadki</td>
-			<td>Pozostało</td>
+			<th>L.p.</th>
+			<th colspan="2">Gatunek</th>
+			<th>Stan w łowisku</th>
+			<th>Planowane pozyskanie</th>
+			<th>Pozyskano</th>
+			<th>Upadki</th>
+			<th>Pozostało</th>
 			</tr>
             		<tr>
 			<td>1</td>

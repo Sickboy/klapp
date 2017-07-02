@@ -32,3 +32,15 @@ Route::get('/gosp/zwierzyna/jelen','Gosp\Zwierzyna@jelen');
 
 Route::get('/gosp/urzadzenia','Gosp\Urzadzenia@index');
 Route::get('/gosp/urzadzenia/{id}','Gosp\Urzadzenia@show') ;
+
+Route::get('/ewid/mysliwi','Ewid\Mysliwi@index');
+Route::get('/ewid/mysliwi/{id}','Ewid\Mysliwi@show') ;
+
+Route::get('/ewid/psy','Ewid\Psy@index');
+Route::get('/ewid/psy/{id}','Ewid\Psy@show') ;
+
+Route::get('/gosp/prace','Gosp\Prace@index');
+Route::get('/gosp/prace/{id}','Gosp\Prace@show') ;
+
+Route::get('/gosp/zadania','Gosp\Zadania@index');
+Route::get('/gosp/zadania/{id}','Gosp\Zadania@show') ;

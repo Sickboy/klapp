@@ -113,37 +113,8 @@
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">1</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 1 task</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
+@yield('task')
+                 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" >
@@ -184,7 +155,7 @@
 	<li><a href="#"><i class="fa fa-calendar"></i> Kalendarz</a></li>
 	<li><a href="#"><i class="fa fa-map-o"></i> Mapa</a></li>
 	</ul></li>
-	<li class="treeview">
+	<li @isset($ewid) class="active" @endisset class="treeview">
           <a href="#">
             <i class="fa fa-id-card" aria-hidden="true"></i> <span>EWIDENCJA</span>
             <span class="pull-right-container">
@@ -192,9 +163,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-	<li><a href="#"><i class="fa fa-users"></i> Lista myśliwych</a></li>
+	<li @isset($Mysliwi) class="active" @endisset><a href="/ewid/mysliwi"><i class="fa fa-users"></i> Lista myśliwych</a></li>
 	<li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> Lista stażystów</a></li>
-	<li><a href="#"><i class="fa fa-user"></i> Psy</a></li>
+	<li @isset($Psy) class="active" @endisset><a href="/ewid/psy"><i class="fa fa-user"></i> Psy</a></li>
 	<li><a href="#"><i class="fa fa-user"></i> Zarząd</a></li>
 	</ul></li>
 	<li @isset($gosp) class="active" @endisset class="treeview">
@@ -209,8 +180,8 @@
 	<li><a href="#"><i class="fa fa-list"></i> Odstrzały</a></li>
 	<li @isset($Zwierzyna) class="active" @endisset><a href="/gosp/zwierzyna"><i class="fa fa-binoculars"></i> Zwierzyna</a></li>
 	<li @isset($Urzadzenia) class="active" @endisset><a href="/gosp/urzadzenia"><i class="fa fa-bookmark"></i> Urządzenia</a></li>
-	<li><a href="#"><i class="fa fa-briefcase"></i> Prace</a></li>
-	<li><a href="#"><i class="fa fa-tasks"></i> Zadania</a></li>
+	<li @isset($Prace) class="active" @endisset><a href="/gosp/prace"><i class="fa fa-briefcase"></i> Prace</a></li>
+	<li @isset($Zadania) class="active" @endisset><a href="/gosp/zadania"><i class="fa fa-tasks"></i> Zadania</a></li>
 	<li><a href="#"><i class="fa fa-users"></i> Polowania zbiorowe</a></li>
 	<li><a href="#"><i class="fa fa-road"></i> Upadki</a></li>
 	<li><a href="#"><i class="fa fa-window-close"></i> Szkody </a></li>
