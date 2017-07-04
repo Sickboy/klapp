@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Control panel</small>
+        <small>Panel kontrolny</small>
       </h1>
       <ol class="breadcrumb">
         Home {{ $bc }}
@@ -83,7 +83,7 @@
 <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
-             <!-- <span class="label label-danger">1</span> -->
+             <span class="label label-danger">1</span>
             </a>
             <ul class="dropdown-menu">
               <li class="header">Twoje zadania</li>

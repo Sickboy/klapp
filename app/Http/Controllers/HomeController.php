@@ -32,7 +32,7 @@ class HomeController extends Controller
 		$upadki = DB::table('gosp_zwierzyna')->where('id', $upadkid)->first();
 		$pozyskid = DB::table('gosp_plan')->where('rok', $rok)->value('pozyskano');
 		$pozysk = DB::table('gosp_zwierzyna')->where('id', $pozyskid)->first();
-		$task = DB::select('SELECT * FROM gosp_zadania WHERE dla='.Auth::user()->id.' AND status="Nowe" OR status="W toku"');
+		$task = DB::select('SELECT * FROM gosp_zadania WHERE dla='.Auth::user()->id.' AND status="Nowe" OR status="W toku" ');
         return view('home', [ 'plan'=>$plan, 'upadki'=>$upadki, 'pozysk'=>$pozysk, 'bc' => '', 'Dashboard' => 'active', 'task'=>$task]);
     }
 }

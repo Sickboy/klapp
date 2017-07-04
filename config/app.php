@@ -12,8 +12,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'KLApp'),
-    'nameshort' => env('APP_NAMESHORT', 'KLA'),
+    'name' => env('APP_NAME', 'e-Łoś'),
+    'nameshort' => env('APP_NAMESHORT', 'e-Łoś'),
 
     /*
     |--------------------------------------------------------------------------
