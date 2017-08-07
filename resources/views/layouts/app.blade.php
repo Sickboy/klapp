@@ -118,10 +118,10 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" >
-              <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{ asset('dist/img/'.Auth::user()->image.' ') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->name }} {{ Auth::user()->last_name }} </span>
             </a>
-            
+             
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
@@ -141,7 +141,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
 	<li @isset($Dashboard) class="active" @endisset ><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="treeview">
+        <li  @isset($ogol) class="active" @endisset class="treeview">
           <a href="#">
             <i class="fa fa-globe"></i> <span>OGÓLNE</span>
             <span class="pull-right-container">
@@ -149,7 +149,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-	<li><a href="#"><i class="fa fa-envelope-o"></i> @mail</a></li>
+	<li @isset($Mail) class="active" @endisset><a href="/ogol/mail/odbiorcza"><i class="fa fa-envelope-o"></i> @mail</a></li>
 	<li><a href="#"><i class="fa fa-commenting-o"></i> @SMS</a></li>
 	<li><a href="#"><i class="fa fa-file-text-o"></i> Dokumenty</a></li>
 	<li><a href="#"><i class="fa fa-calendar"></i> Kalendarz</a></li>

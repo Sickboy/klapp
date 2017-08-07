@@ -47,4 +47,4 @@ Route::get('/gosp/zadania','Gosp\Zadania@index');
 Route::get('/gosp/zadania/{id}','Gosp\Zadania@show') ;
 
 Route::get('/ogol/mail/odbiorcza','Ogol\Mail@index'); 
-Route::get('/ogol/mail/czytaj/{id}','Ogol\Mail@read') ;
+Route::get('/ogol/mail/{id}','Ogol\Mail@read') ;

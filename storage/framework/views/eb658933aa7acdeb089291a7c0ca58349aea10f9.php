@@ -1,5 +1,4 @@
 <?php $__env->startSection('content'); ?>
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Dashboard
@@ -13,10 +12,8 @@
 
     <!-- Main content -->
     <section class="content">
-<div class="container">
-    <div class="row">
-		<div class="col-md-11">
-        <div class="col-lg-3 col-xs-6">
+<div class="row">	
+     <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
@@ -29,8 +26,7 @@
             <a href="/gosp/plan" class="small-box-footer">Więcej informacji <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+      <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
@@ -43,8 +39,7 @@
             <a href="/gosp/plan" class="small-box-footer">Więcej informacji <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+      <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
@@ -57,8 +52,7 @@
             <a href="/gosp/plan" class="small-box-footer">Więcej informacji <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+       <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -71,11 +65,53 @@
             <a href="/gosp/plan" class="small-box-footer">Więcej informacji <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
-      </div>
-    </div>
 </div>
- </section>
+<div class="row">
+<section class="col-lg-12">
+<div class="box">
+            <div class="box-header">
+              <i class="fa fa-comments-o"></i>
+              <h3 class="box-title">Chat</h3>
+            </div>
+            <div class="box-body chat" id="chat-box">
+              <!-- chat item -->
+              <?php $__currentLoopData = $czat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $czats): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <div class="item">
+                <img src="dist/img/<?php echo e($czats->image); ?>" alt="user image">
+
+                <p class="message">
+                  <a href="#" class="name">
+                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php echo e($czats->data); ?></small>
+                    <?php echo e($czats->name); ?> <?php echo e($czats->last_name); ?>
+
+                  </a>
+                  <?php echo e($czats->tresc); ?>
+
+                </p>
+              </div>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+            <!-- /.chat -->
+            <div class="box-footer">
+              
+              <form action = "/czat/insert" method = "post">
+              <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ; ?>">
+					<div class="input-group">                
+                <input name="tresc" class="form-control" placeholder="Napisz wiadomość...">
+
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-success" ><i class="fa fa-plus"></i></button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          </section>
+</div>
+    </section>
+    
+    
+    <!-- /.content -->
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('task'); ?>

@@ -78,7 +78,7 @@
               <!-- chat item -->
               @foreach ($czat as $czats)
               <div class="item">
-                <img src="dist/img/{{ $czats->image }}" alt="user image">
+                <img src="dist/img/".{{ $czats->image }}."> " alt="user image">
 
                 <p class="message">
                   <a href="#" class="name">
