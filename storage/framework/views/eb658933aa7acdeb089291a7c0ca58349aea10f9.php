@@ -118,10 +118,10 @@
 <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
-             <span class="label label-danger">1</span>
+             <?php if($task_ile!='0'): ?><span class="label label-danger"><?php echo e($task_ile); ?></span><?php endif; ?>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">Twoje zadania</li>
+              <li class="header">Masz <?php echo e($task_ile); ?> aktywne zadania</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -145,6 +145,39 @@
               </li>
             </ul>
           </li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('mail'); ?>
+<li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              <?php if($unread_ile!='0'): ?><span class="label label-danger"><?php echo e($unread_ile); ?></span><?php endif; ?>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">Masz <?php echo e($unread_ile); ?> nieprzeczytane wiadomości</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+<?php $__currentLoopData = $unread; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $unreads): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<li><!-- start message -->
+                    <a href="/mail/czytaj/<?php echo e($unreads->id); ?>">
+                      <div class="pull-left">
+                        <img src="<?php echo e(asset('dist/img/'.$unreads->image)); ?>" class="img-circle" alt="User Image">
+                      </div>
+                      <h4>
+                        <?php echo e($unreads->name); ?> <?php echo e($unreads->last_name); ?>
+
+                        <small><i class="fa fa-clock-o"></i><?php echo e($unreads->data); ?></small>
+                      </h4>
+                      <p><?php echo e($unreads->tytul); ?></p>
+                    </a>
+                  </li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                  </ul>
+              </li>
+              <li class="footer"><a href="/mail/odbiorcza">Zobacz wszystkie wiadomości</a></li>
+            </ul>
+          </li>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

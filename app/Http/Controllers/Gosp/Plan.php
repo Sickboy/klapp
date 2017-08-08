@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\Auth;
 class Plan extends Controller
 {
     public function index()
@@ -23,6 +23,8 @@ class Plan extends Controller
 	$upadki = DB::table('gosp_zwierzyna')->where('id', $upadkid)->first();
 	$pozyskid = DB::table('gosp_plan')->where('rok', $rok)->value('pozyskano');
 	$pozysk = DB::table('gosp_zwierzyna')->where('id', $pozyskid)->first();
-      	return view('gosp.plan.index',['plans'=>$plans, 'stan'=>$stan, 'planp'=>$plan, 'upadki'=>$upadki, 'pozysk'=>$pozysk, 'bc'=>' > Gospodarka łowiecka > Plan łowiecki', 'PlanLowiecki' => 'active', 'gosp' => 'active']) ;
+	$task = DB::select('SELECT * FROM gosp_zadania WHERE dla='.Auth::user()->id.' AND status="Nowe" OR status="W toku" ');
+		      	
+      	return view('gosp.plan.index',['task'=>$task,'plans'=>$plans, 'stan'=>$stan, 'planp'=>$plan, 'upadki'=>$upadki, 'pozysk'=>$pozysk, 'bc'=>' > Gospodarka łowiecka > Plan łowiecki', 'PlanLowiecki' => 'active', 'gosp' => 'active']) ;
     }
 }

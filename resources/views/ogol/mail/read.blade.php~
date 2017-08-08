@@ -14,7 +14,7 @@
     <section class="content">
     <div class="row">
     <div class="col-md-3">
-          <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Utwórz</a>
+          <a href="/mail/utworz" class="btn btn-primary btn-block margin-bottom">Utwórz</a>
 
           <div class="box box-solid">
             <div class="box-header with-border">
@@ -27,9 +27,9 @@
             </div>
             <div class="box-body no-padding">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="/ogol/mail/odbiorcza"><i class="fa fa-inbox"></i> Odbiorcza
-                <li><a href="/ogol/mail/nadawcza"><i class="fa fa-envelope-o"></i> Nadawcza</a></li>
-                 <li><a href="/ogol/mail/kosz"><i class="fa fa-trash-o"></i> Kosz</a></li>
+                <li><a href="/mail/odbiorcza"><i class="fa fa-inbox"></i> Odbiorcza
+                <li><a href="/mail/nadawcza"><i class="fa fa-envelope-o"></i> Nadawcza</a></li>
+                 <li><a href="/mail/kosz"><i class="fa fa-trash-o"></i> Kosz</a></li>
               </ul>
             </div>
             <!-- /.box-body -->
@@ -96,10 +96,10 @@
 <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
-             <span class="label label-danger">1</span>
+             @if($task_ile!='0')<span class="label label-danger">{{ $task_ile }}</span>@endif
             </a>
             <ul class="dropdown-menu">
-              <li class="header">Twoje zadania</li>
+              <li class="header">Masz {{ $task_ile }} aktywne zadania</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -122,4 +122,36 @@
               </li>
             </ul>
           </li>
+@endsection
+
+@section('mail')
+<li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              @if($unread_ile!='0')<span class="label label-danger">{{ $unread_ile }}</span>@endif
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">Masz {{ $unread_ile }} nieprzeczytane wiadomości</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+@foreach ($unread as $unreads)
+						<li><!-- start message -->
+                    <a href="/mail/czytaj/{{ $unreads->id }}">
+                      <div class="pull-left">
+                        <img src="{{ asset('dist/img/'.$unreads->image) }}" class="img-circle" alt="User Image">
+                      </div>
+                      <h4>
+                        {{ $unreads->name }} {{ $unreads->last_name }}
+                        <small><i class="fa fa-clock-o"></i>{{ $unreads->data }}</small>
+                      </h4>
+                      <p>{{ $unreads->tytul }}</p>
+                    </a>
+                  </li>
+                @endforeach                  </ul>
+              </li>
+              <li class="footer"><a href="/mail/odbiorcza">Zobacz wszystkie wiadomości</a></li>
+            </ul>
+          </li>
+
 @endsection

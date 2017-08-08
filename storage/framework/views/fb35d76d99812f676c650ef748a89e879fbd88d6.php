@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="<?php echo e(asset('plugins/datepicker/datepicker3.css')); ?>">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="<?php echo e(asset('plugins/daterangepicker/daterangepicker.css')); ?>">
+ <!-- iCheck -->
+  <link rel="stylesheet" href="<?php echo e(asset('plugins/iCheck/flat/blue.css')); ?>">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo e(asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')); ?>">
 
@@ -63,34 +65,10 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-info">1</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 1 messages</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="<?php echo e(asset('dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
+          
+<?php echo $__env->yieldContent('mail'); ?>
                   <!-- end message -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
+
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -150,7 +128,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-	<li <?php if(isset($Mail)): ?> class="active" <?php endif; ?>><a href="/ogol/mail/odbiorcza"><i class="fa fa-envelope-o"></i> @mail</a></li>
+	<li <?php if(isset($Mail)): ?> class="active" <?php endif; ?>><a href="/mail/odbiorcza"><i class="fa fa-envelope-o"></i> @mail</a></li>
 	<li><a href="#"><i class="fa fa-commenting-o"></i> @SMS</a></li>
 	<li><a href="#"><i class="fa fa-file-text-o"></i> Dokumenty</a></li>
 	<li><a href="#"><i class="fa fa-calendar"></i> Kalendarz</a></li>
@@ -303,6 +281,7 @@
 <script src="<?php echo e(asset('dist/js/pages/dashboard.js')); ?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo e(asset('dist/js/demo.js')); ?>"></script>
+
 <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>

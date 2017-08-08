@@ -34,9 +34,13 @@ class HomeController extends Controller
 		$upadki = DB::table('gosp_zwierzyna')->where('id', $upadkid)->first();
 		$pozyskid = DB::table('gosp_plan')->where('rok', $rok)->value('pozyskano');
 		$pozysk = DB::table('gosp_zwierzyna')->where('id', $pozyskid)->first();
-		$task = DB::select('SELECT * FROM gosp_zadania WHERE dla='.Auth::user()->id.' AND status="Nowe" OR status="W toku" ');
 		$czat = DB::select('SELECT p.*, c.name, c.last_name, c.image FROM ogol_czat p JOIN users c ON p.autor=c.id ORDER BY p.id DESC LIMIT 15');      
-      return view('home', [ 'czat'=>$czat, 'plan'=>$plan, 'upadki'=>$upadki, 'pozysk'=>$pozysk, 'bc' => '', 'Dashboard' => 'active', 'task'=>$task]);
+		$task = DB::select('SELECT * FROM gosp_zadania WHERE dla='.Auth::user()->id.' AND status="Nowe" OR status="W toku" ');
+    	$task_ile = DB::table('gosp_zadania')->where('dla', Auth::user()->id)->where('status', 'Nowe')->orwhere('status', 'W toku')->count();
+    	$unread = DB::select('SELECT p.*, c.name, c.last_name, c.image FROM ogol_mail p JOIN users c ON p.od=c.id WHERE p.do='.Auth::user()->id.' AND p.read=0 ORDER BY p.id DESC');
+    	$unread_ile = DB::table('ogol_mail')->where('do', Auth::user()->id)->where('read', 0)->count();
+    	      
+      return view('home', [ 'czat'=>$czat, 'plan'=>$plan, 'upadki'=>$upadki, 'pozysk'=>$pozysk, 'bc' => '', 'Dashboard' => 'active', 'task'=>$task, 'task_ile'=>$task_ile ,'unread'=>$unread, 'unread_ile'=>$unread_ile]);
     }
     public function insert(Request $request)
     {

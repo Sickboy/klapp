@@ -26,6 +26,11 @@ Route::get('/users/edit/{id}','Users\Users@edit') ;
 Route::post('/users/update','Users\Users@update') ;
 Route::post('/czat/insert','HomeController@insert') ;
 
+Route::get('/mail/odbiorcza','Ogol\Mail@index'); 
+Route::get('/mail/utworz','Ogol\Mail@write'); 
+Route::get('/mail/czytaj/{id}','Ogol\Mail@read') ;
+Route::post('/mail/wyslij','Ogol\Mail@send') ;
+
 Route::get('/gosp/plan','Gosp\Plan@index');
 
 Route::get('/gosp/zwierzyna','Gosp\Zwierzyna@index');
@@ -46,5 +51,3 @@ Route::get('/gosp/prace/{id}','Gosp\Prace@show') ;
 Route::get('/gosp/zadania','Gosp\Zadania@index');
 Route::get('/gosp/zadania/{id}','Gosp\Zadania@show') ;
 
-Route::get('/ogol/mail/odbiorcza','Ogol\Mail@index'); 
-Route::get('/ogol/mail/czytaj/{id}','Ogol\Mail@read') ;
