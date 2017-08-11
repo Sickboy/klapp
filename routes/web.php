@@ -27,7 +27,10 @@ Route::post('/users/update','Users\Users@update') ;
 Route::post('/czat/insert','HomeController@insert') ;
 
 Route::get('/mail/odbiorcza','Ogol\Mail@index'); 
+Route::get('/mail/nadawcza','Ogol\Mail@sended'); 
+Route::get('/mail/kosz','Ogol\Mail@del'); 
 Route::get('/mail/utworz','Ogol\Mail@write'); 
+Route::get('/mail/utworz/{id}','Ogol\Mail@write'); 
 Route::get('/mail/czytaj/{id}','Ogol\Mail@read') ;
 Route::post('/mail/wyslij','Ogol\Mail@send') ;
 

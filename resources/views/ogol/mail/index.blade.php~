@@ -46,8 +46,8 @@
             </div>
             <div class="box-body no-padding">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="#"><i class="fa fa-envelope text-red"></a></i> Nieprzeczytana</li>
-                <li><a href="#"><i class="fa fa-envelope-open text-green"></a></i> Przeczytana</li>
+                <li><a href="#"><i class="fa fa-envelope text-red"></i> Nieprzeczytana</a></li>
+                <li><a href="#"><i class="fa fa-envelope-open text-green"></i> Przeczytana</a></li>
               </ul>
             </div>
             <!-- /.box-body -->

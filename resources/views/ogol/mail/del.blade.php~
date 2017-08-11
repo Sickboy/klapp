@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-  
     <section class="content-header">
       <h1>
         @mail
-        <small>Utwórz wiadomość</small>
+        <small>Skrzynka odbiorcza</small>
       </h1>
       <ol class="breadcrumb">
         Home {{ $bc }}
@@ -15,7 +14,7 @@
     <section class="content">
     <div class="row">
     <div class="col-md-3">
-          <a href="/mail/utworz" class="btn btn-primary btn-block margin-bottom">Utwórz</a>
+          <a href="/mail/utworz/0" class="btn btn-primary btn-block margin-bottom">Utwórz</a>
 
           <div class="box box-solid">
             <div class="box-header with-border">
@@ -55,97 +54,83 @@
           </div>
           <!-- /.box -->
         </div>
-        <div class="col-md-9">
-        @if($id==0)
+ <div class="col-md-9">
           <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Utwórz wiadomość</h3>
-            </div>
             <!-- /.box-header -->
-            <div class="box-body">
-            <form action = "/mail/wyslij" method = "post">
-            <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ; ?>">
-              <div class="form-group">
-                <select class="form-control" name="do">
-                    <option>Do:</option>
-                    @foreach ($user as $users)
-                    <option value="{{ $users->id }}">{{ $users->name }} {{ $users->last_name }}</option>
-                    @endforeach
-                  </select>
-              </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Tytuł:" name="tytul">
-              </div>
-              <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px" name="tresc"></textarea>
-              </div>
-              <div class="form-group">
-                <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> Załącznik
-                  <input type="file" name="attachment">
+            <div class="box-body no-padding">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                </button>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
                 </div>
-                <p class="help-block">Max. 32MB</p>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <div class="pull-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.pull-right -->
               </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                  @foreach ($mail as $mails)
+                  <tr onclick="window.document.location='/mail/czytaj/{{ $mails->id }}';">
+                    <td><input type="checkbox"></td>
+                    <td class="mailbox-star">
+							@php if($mails->read == 0)
+										{echo '<i class="fa fa-envelope text-red"></i>';}
+									else
+										{echo '<i class="fa fa-envelope-open text-green"></i>';}
+							@endphp
+                   <!--- <td class="mailbox-name">{{ $mails->name }} {{ $mails->last_name }}</td> -->
+                    <td class="mailbox-subject">{{ $mails->tytul }}</td>
+                    <td class="mailbox-attachment"></td>
+                    <td class="mailbox-date">{{ $mails->data }}</td>
+                  </tr>
+                  @endforeach
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer">
-              <div class="pull-right">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Wyślij</button>
-              </div>
-              <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Wyczyść</button>
-            </div>
-            </form>
-            <!-- /.box-footer -->
-          </div>
-          @endif
-          @if($id!=0)
-          @foreach ($mail as $mails)
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Utwórz wiadomość</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-            <form action = "/mail/wyslij" method = "post">
-            <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ; ?>">
-              <div class="form-group">
-               <input class="form-control"  disabled="disabled" value="{{ $mails->name }} {{ $mails->last_name }}" placeholder="">
-               <input type="hidden" name="do" value="{{ $mails->od }}" >
-              </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Tytuł:" name="tytul" value="RE: {{ $mails->tytul }}">
-              </div>
-              <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px" name="tresc">
-
-
-W dniu {{ $mails->data }} użytkownik {{ $mails->name }} {{ $mails->last_name }} napisał:
-<i>{{ $mails->tresc }}</i>                    
-                    </textarea>
-              </div>
-              <div class="form-group">
-                <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> Załącznik
-                  <input type="file" name="attachment">
+            <div class="box-footer no-padding">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                </button>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
                 </div>
-                <p class="help-block">Max. 32MB</p>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <div class="pull-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.pull-right -->
               </div>
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-              <div class="pull-right">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Wyślij</button>
-              </div>
-              <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Wyczyść</button>
-            </div>
-            </form>
-            <!-- /.box-footer -->
           </div>
-          @endforeach
-          @endif
           <!-- /. box -->
         </div>
-      </div>
+        </div>
     </section>
     
     
@@ -214,17 +199,4 @@ W dniu {{ $mails->data }} użytkownik {{ $mails->name }} {{ $mails->last_name }}
             </ul>
           </li>
 
-@endsection
-
-@section('js')
-<!-- iCheck -->
-<script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
-<script>
-  $(function () {
-    //Add text editor
-    $("#compose-textarea").wysihtml5();
-  });
-</script>
 @endsection

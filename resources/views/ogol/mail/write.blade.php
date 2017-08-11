@@ -15,7 +15,7 @@
     <section class="content">
     <div class="row">
     <div class="col-md-3">
-          <a href="/mail/utworz" class="btn btn-primary btn-block margin-bottom">Utwórz</a>
+          <a href="/mail/utworz/0" class="btn btn-primary btn-block margin-bottom">Utwórz</a>
 
           <div class="box box-solid">
             <div class="box-header with-border">
@@ -56,9 +56,10 @@
           <!-- /.box -->
         </div>
         <div class="col-md-9">
+        @if($id==0)
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Compose New Message</h3>
+              <h3 class="box-title">Utwórz wiadomość</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -96,6 +97,52 @@
             </form>
             <!-- /.box-footer -->
           </div>
+          @endif
+          @if($id!=0)
+          @foreach ($mail as $mails)
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Utwórz wiadomość</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <form action = "/mail/wyslij" method = "post">
+            <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ; ?>">
+              <div class="form-group">
+               <input class="form-control"  disabled="disabled" value="{{ $mails->name }} {{ $mails->last_name }}" placeholder="">
+               <input type="hidden" name="do" value="{{ $mails->od }}" >
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Tytuł:" name="tytul" value="RE: {{ $mails->tytul }}">
+              </div>
+              <div class="form-group">
+                    <textarea id="compose-textarea" class="form-control" style="height: 300px" name="tresc">
+
+
+W dniu {{ $mails->data }} użytkownik {{ $mails->name }} {{ $mails->last_name }} napisał:
+<i>{{ $mails->tresc }}</i>                    
+                    </textarea>
+              </div>
+              <div class="form-group">
+                <div class="btn btn-default btn-file">
+                  <i class="fa fa-paperclip"></i> Załącznik
+                  <input type="file" name="attachment">
+                </div>
+                <p class="help-block">Max. 32MB</p>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <div class="pull-right">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Wyślij</button>
+              </div>
+              <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Wyczyść</button>
+            </div>
+            </form>
+            <!-- /.box-footer -->
+          </div>
+          @endforeach
+          @endif
           <!-- /. box -->
         </div>
       </div>

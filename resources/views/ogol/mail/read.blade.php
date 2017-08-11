@@ -14,7 +14,7 @@
     <section class="content">
     <div class="row">
     <div class="col-md-3">
-          <a href="/mail/utworz" class="btn btn-primary btn-block margin-bottom">Utwórz</a>
+          <a href="/mail/utworz/0" class="btn btn-primary btn-block margin-bottom">Utwórz</a>
 
           <div class="box box-solid">
             <div class="box-header with-border">
@@ -65,7 +65,8 @@
                   <span class="mailbox-read-time pull-right">{{ $mails->data }}</span></h5>
               </div>
               <div class="mailbox-read-message">
-                {{ $mails->tresc }}
+              @php echo nl2br($mails->tresc); @endphp
+                
               </div>
               <!-- /.mailbox-read-message -->
             </div>
@@ -74,7 +75,8 @@
             <!-- /.box-footer -->
             <div class="box-footer">
               <div class="pull-right">
-                <button type="button" class="btn btn-default"><i class="fa fa-reply"></i> Odpowiedz</button>
+                <button type="button" class="btn btn-default" onclick="location.href='/mail/utworz/{{ $mails->id }}'"><i class="fa fa-reply"></i> Odpowiedz</button>
+                
                 <button type="button" class="btn btn-default"><i class="fa fa-share"></i> Przekaż</button>
               </div>
               <button type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Usuń</button>
